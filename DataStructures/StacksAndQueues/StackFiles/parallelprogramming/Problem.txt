@@ -1,0 +1,45 @@
+Parallel Programming
+
+This is an important programming paradigm where you can run multiple “threads” of execution in parallel. Parallel programming is useful in reducing the running time, or deal with asynchronous inputs, or sometimes just to model the problem in a better manner. Here we will use Java threads to get a taste of parallel programming.
+
+Programming Problem: You have to create multiple java threads (number of threads will be specified as input). Each thread will read from a separate file and execute the operation on a shared stack. Note that you should make proper use of synchronization.
+
+Program name: You must write a Simulate.java program which contains the main method. This is the program that we will run to check your implementations.
+
+The stack operations must be read from files named operations-x.txt. For example if there are 5 threads, thread 1 reads from operations-1.txt file, thread 2 reads from operations-2.txt file and so on. Each file contains push and pop statements in separate lines. Following is an example of an operations-x.txt file:
+
+push: <a>
+push: <b>
+push: <c>
+pop
+pop
+push: <d>
+pop
+
+Output: Your program should output two files. First it should produce a file named operations-out.txt which should contain the push operation and the thread number which executes this operation. For example suppose thread #1 executed push(a), pop(), push(b), and then thread #2 executed pop(). Then your operations-out.txt file should be the following:
+
+1, push: <a>
+1, pop
+1, push: <b>
+2, pop
+
+Your second file should be named output.txt and it should contain the output of the pop operations performed on the shared stack and the thread number performing the operation. For example, corresponding to the above operations-out.txt file, your output.txt file should be the following:
+
+1, <a>
+2, <b>
+Your program must handle the errors in input file format as exception. These must be caught and reported on standard output as "FileFormatException".
+
+Empty stack errors: In case of errors, for example, the stack is empty and there is a pop request. The output.txt file should contain the appropriate exception name for that request. For example, there is a single thread and the input file operations-1.txt is the following:
+
+1, push: <a>
+1, pop
+1, pop
+1, push: <b>
+1, pop
+
+Then the output.txt file should look like:
+
+1, <a>
+1, EmptyStackException
+1, <b>
+

@@ -1,0 +1,10 @@
+push: <a>
+push: <b>
+pop
+hop
+push: <c>
+pop
+pop
+pop
+push: <d>
+pop
