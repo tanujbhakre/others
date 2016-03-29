@@ -12,7 +12,6 @@ public class SenderMain {
 	private final static String QUEUE_NAME = "hello";
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("localhost");
 		Connection connection;
@@ -25,6 +24,8 @@ public class SenderMain {
 			String message = "Hello World! This is Tanuj";
 			channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
 			System.out.println(" [x] Sent '" + message + "'");
+			channel.close();
+			connection.close();
 		} catch (IOException | TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
