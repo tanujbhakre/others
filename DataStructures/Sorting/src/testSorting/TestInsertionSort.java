@@ -19,11 +19,11 @@ public class TestInsertionSort {
 		FileReader fr = new FileReader(outputFile);
 		BufferedReader reader = new BufferedReader(fr);
 		try {
-			String currLine=null;
-			while ((currLine=reader.readLine() )!= null) {
-				String [] list=currLine.split(",");
-				
-				assertEquals(SortingUtil.isSorted(list),true);
+			String currLine = null;
+			while ((currLine = reader.readLine()) != null) {
+				String[] list = currLine.split(",");
+
+				assertEquals(SortingUtil.isSorted(list), true);
 			}
 		} catch (IOException e) {
 
