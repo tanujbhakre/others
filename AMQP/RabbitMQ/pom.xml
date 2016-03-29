@@ -6,7 +6,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java-version>1.7</java-version>
+		<rabbit-mq-version>3.6.1</rabbit-mq-version>
 	</properties>
+	<dependencies>
+	<dependency>
+	<groupId>com.rabbitmq</groupId>
+	<artifactId>amqp-client</artifactId>
+	<version>${rabbit-mq-version}</version>
+</dependency>
+	
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
