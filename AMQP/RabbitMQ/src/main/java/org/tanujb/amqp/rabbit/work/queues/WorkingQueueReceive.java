@@ -24,7 +24,7 @@ public class WorkingQueueReceive {
 			final Channel channel = connection.createChannel();
 			boolean durable = true;
 			channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
-
+			channel.basicQos(1);
 			final Consumer consumer = new DefaultConsumer(channel) {
 				@Override
 				public void handleDelivery(String consumerTag,
