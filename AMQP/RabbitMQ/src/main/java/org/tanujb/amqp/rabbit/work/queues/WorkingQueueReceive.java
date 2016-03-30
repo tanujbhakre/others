@@ -18,6 +18,7 @@ public class WorkingQueueReceive {
 	public static void main(String[] args) {
 
 		ConnectionFactory factory = new ConnectionFactory();
+		factory.setHost("localhost");
 		try {
 
 			final Connection connection = factory.newConnection();
