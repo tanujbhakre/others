@@ -1,0 +1,67 @@
+<h2>Payment options</h2>
+
+<div>
+  <table object-table data="paymentInfo.paymentInfor.data"
+  display="paymentInfo.paymentInfor.display"
+  headers="Payment Portal,Description,How To,Currencies,Transaction Fee,Rating,Setup Fee,Branding"
+  fields="image,name,description,howToUrl,currencies,transactionFee,rating,setupFee,branding"
+      paging=false>
+    <thead>
+      <tr>
+        <th>Payment Portal</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>How To</th>
+        <th>Currencies</th>
+        <th>Transaction Fee</th>
+        <th ng-click="sortBy('rating')"
+        ng-class="headerIsSortedClass('Rating')"
+        class="sortable">
+          Rating
+        </th>
+        <th>Setup Fee</th>
+        <th>Branding</th>
+      </tr>
+    </thead>
+    <tbody ng-non-bindable>
+      <tr>
+        <td><img src="{{::item.image}}" alt="{{::item.name}}" title="{{::item.name}}" width="80" height="30" ></td>
+        <td>{{::item.name}}</td>
+        <td>{{::item.description}}</td>
+        <td>
+          <a href="{{::item.howToUrl}}" target="_blank">
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+        </td>
+        <td>
+          <span ng-repeat="currency in item.currencies">
+            <span class = "label label-primary">{{::currency}}</span>
+          </span>
+        </td>
+        <td>{{::item.transactionFee}}</td>
+        <td>{{::item.rating}}</td>
+        <td><span ng-class="{'glyphicon glyphicon-ok': item.setupFee,'glyphicon glyphicon-remove': !item.setupFee}"></span></td>
+        <td><span ng-class="{'glyphicon glyphicon-ok': item.branding,'glyphicon glyphicon-remove': !item.branding}"></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- loading -->
+  <div class="loading" ng-show="!paymentInfo.paymentInfor.data.length">
+    <span class="glyphicon glyphicon-refesh glyphicon-refresh-animate"></span>Loading Data...
+  </div>
+
+  <!--navigation-->
+  <nav>
+    <ul class="pagination">
+      <li ng-class="{disabled: paymentInfo.paymentInfor.currentPage==1}">
+        <a href ng-click="paymentInfo.loadPage(paymentInfo.paymentInfor.currentPage-1)">Previous</a>
+      </li>
+      <li ng-repeat="page in paymentInfo.paymentInfor.pages" ng-click="paymentInfo.loadPage(page+1)" ng-class="{active: page == paymentInfo.paymentInfor.currentPage-1}">
+        <a href="javascript:void(0)">{{page+1}}</a>
+      </li>
+      <li ng-class="{disabled: paymentInfo.paymentInfor.currentPage==paymentInfo.paymentInfor.pages.length}">
+        <a href ng-click="paymentInfo.loadPage(paymentInfo.paymentInfor.currentPage+1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
