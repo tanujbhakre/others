@@ -1,2 +1,2 @@
 # others
-This project contains number of sub projects which I wanted to back up
+This project contains number of sub projects which I wanted to archive
