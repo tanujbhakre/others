@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-sm-8">
+     <ul class="list-group">
+       <li class="list-group-item active">
+         <div class="input-group">
+            <input type="text" ng-model="vm.filter.multifield" class="form-control" id="multifield" placeholder="Search (by title, level or language)">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="vm.search()"><span class="glyphicon glyphicon-search"></span> Search</button>
+            </span>
+          </div>
+       </li>
+     </ul>
+    <div>
+        <div  ng-repeat="submission in vm.submissions">
+          <div class="panel panel-primary">
+            <div class="panel-heading" class="col-sm-12">
+             <span>{{submission.title}}</span>
+              <span class = "label label-warning pull-right">{{submission.status}}</span>
+              <span class="label label-success pull-right">{{submission.language}}</span>
+            <!-- <div>{{submission.metadata.level}}</div>
+             <div>{{submission.metadata.rating}}</div>
+             <div>{{submission.metadata.users_attempted}}</div>-->
+            </div>
+            <div class="panel-body code-container">
+              <!--<div hljs hljs-source="{{submission.source}}"></div>-->
+              <pre><p>{{submission.source}}</p><pre>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div paging
+      page="vm.pagination.page"
+      page-size="vm.pagination.pageSize"
+      total="vm.pagination.total"
+      paging-action="vm.onPageChange('Changed',page, pageSize, total)"
+      show-prev-next="true"
+      show-first-last="true"
+      text-next-class="glyphicon glyphicon-chevron-right"
+      text-prev-class="glyphicon glyphicon-chevron-left"
+      text-first-class="glyphicon glyphicon-backward"
+      text-last-class="glyphicon glyphicon-forward">
+    </div>
+    <form class="form-inline" role="form" ng-show="vm.submissions.length>0">
+      <div class="form-group">
+        <label for="pageSize">Page Size:</label>
+        <input type="number" class="form-control" id="pageSize" ng-model="vm.pageSize" max="10" min="1">
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="vm.search()">Update</button>
+    </form>
+  </div>
+  <div class="col-sm-4 bg-warn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4> <span class="glyphicon glyphicon-filter"></span>Filter By Status</h4>
+          </div>
+          <div class="panel-body">
+            <form name="filterForm">
+              <div ng-repeat="option in vm.statusOptions">
+                  <label>
+                      <input type="radio" ng-value="option.value" ng-model="vm.filter.status" ng-change="vm.search()"/>
+                      {{option.name}}
+                  </label>
+              </div>
+             </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4><span class="glyphicon glyphicon-th-list"></span> Statical Analysis</h4>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-info">Top 5 Languages used:</li>
+              <li class="list-group-item" ng-repeat="language in vm.statistics.topLanguages">{{language.key}} : {{language.count}}</li>
+            </ul>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-info">Top 2 Submissions attempted:</li>
+              <li class="list-group-item" ng-repeat="title in vm.statistics.topAttemptedSubmissions">{{title.key}} : {{title.count}}</li>
+            </ul>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-info">Top 5 Languages used:</li>
+              <li class="list-group-item" ng-repeat="level in vm.statistics.submissionsPerLevel">{{level.key}} : {{level.count}}</li>
+            </ul>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-info">Total Submissions : {{vm.statistics.totalSubmissions}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
