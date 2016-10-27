@@ -1,0 +1,40 @@
+<ion-view view-title="Blood Banks">
+  <ion-content class="padding">
+    <div class="card" ng-repeat="bloodbank in vm.bloodbanks">
+      <div class="item item-divider">
+        {{bloodbank.h_name}}
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">{{bloodbank.address}} {{bloodbank.district}} {{bloodbank.state}} {{bloodbank.pincode}}</div>
+        </div>
+        <div class="row" ng-hide="bloodbank.contact==='NA'">
+          <div class="col"><b>{{bloodbank.contact}}</b></div>
+        </div>
+      </div>
+      <div class="item item-divider">
+        <div class="row" ng-hide="bloodbank.helpline==='NA'">
+          <div class="col col-10">
+            <ion-icon class="icon ion-android-call large-ionicon"></ion-icon>
+          </div>
+          <div class="col">
+            {{bloodbank.helpline}}
+          </div>
+        </div>
+        <div class="row" ng-hide="bloodbank.email==='NA'">
+          <div class="col">{{bloodbank.email}}</div>
+        </div>
+        <div class="row" >
+          <div class="col col-20" ng-hide="bloodbank.website==='NA'"  href="{{bloodbank.website}}" external-link>
+            <!---->
+            <ion-icon class="icon ion-earth larger-ionicon  assertive"></ion-icon>
+          </div>
+          <div class="col col-20" ng-show="bloodbank.latitude!=='NA' && bloodbank.longitude!=='NA'" ng-click="vm.setToLocation(bloodbank)">
+            <a href="#/tab/bloodbank-location/{{bloodbank.id}}">
+            <ion-icon class="icon ion-ios-location larger-ionicon assertive"></ion-icon></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

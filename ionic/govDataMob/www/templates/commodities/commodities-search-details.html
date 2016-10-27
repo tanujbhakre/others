@@ -1,0 +1,58 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-assertive">
+    <button class="button button-assertive" ng-click="vm.cancel()"><i class="icon ion-android-arrow-back"></i></button>
+    <h1 class="title">Play With Data</h1>
+  </ion-header-bar>
+
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <button class="button button-full button-assertive" ng-click="vm.openLocationFilter()">
+          Location
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-full button-assertive" ng-click="vm.openCommodityFilter()">
+          Item
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-full button-assertive" ng-click="vm.openSortOrder()">
+          Sort
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-full button-assertive" ng-click="vm.clearDetails()">
+          Clear
+        </button></div>
+    </div>
+    <div class="list">
+
+      <div class="item item-divider" ng-if="vm.searchDetails.filter.commodity.length>0">
+        Filtered Item
+      </div>
+      <div class="item" ng-if="vm.searchDetails.filter.commodity.length>0" ng-repeat="commodity in vm.searchDetails.filter.commodity">
+        {{commodity}}
+      </div>
+      <div class="item item-divider" ng-if="vm.searchDetails.filter.state.length>0">
+        Filtered Location
+      </div>
+      <div class="item" ng-if="vm.searchDetails.filter.state.length>0"  ng-repeat="state in vm.searchDetails.filter.state">
+        {{state}}
+      </div>
+      <div class="item item-divider" ng-if="vm.searchDetails.sort">
+        Sorted By
+      </div>
+      <div class="item" ng-if="vm.searchDetails.sort">
+        {{vm.getSortText()}}
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-assertive">
+    <div class="title" ng-click="vm.save()">
+      Save
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

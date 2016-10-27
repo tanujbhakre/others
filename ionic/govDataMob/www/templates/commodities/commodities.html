@@ -1,0 +1,41 @@
+<ion-view view-title="Commodities">
+  <ion-nav-buttons side="right">
+        <button class="button button-assertive" ng-click="vm.openSearchDetails()">
+            <i class="icon ion-funnel large-ionicon"></i>
+        </button>
+  </ion-nav-buttons>
+  <ion-content padding="true">
+    <div class="spinner" ng-hide="vm.dataLoaded">
+      <ion-spinner class="spinner-energized"></ion-spinner>
+    </div>
+    <div ng-show="vm.data.length==0 && vm.dataLoaded" class="assertive message">No records found.</div>
+    <div class="card" ng-repeat="record in vm.data">
+      <div class="item item-calm item-divider">
+        <p>{{record.commodity}} - {{record.variety}}</p>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">Modal Price</div>
+          <div class="col">{{record.modal_price}}</div>
+        </div>
+        <div class="row">
+          <div class="col">Minimum Price</div>
+          <div class="col">{{record.min_price}}</div>
+        </div>
+        <div class="row">
+          <div class="col">Maximum Price</div>
+          <div class="col">{{record.max_price}}</div>
+        </div>
+      </div>
+      <div class="item item-stable item-divider">
+        <p>{{record.state}} - {{record.district}} - {{record.market}}</p>
+      </div>
+    </div>
+    <div ng-show="vm.responseCount==0 && vm.data.length>0" class="calm message">No records to fetch.</div>
+    <ion-infinite-scroll
+      on-infinite="vm.loadMore()"
+      ng-if="vm.responseCount>0"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

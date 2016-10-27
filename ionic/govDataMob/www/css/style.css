@@ -1,0 +1,36 @@
+/* Empty. Add your own CSS if you like */
+
+/*Ionicon related CSS */
+.large-ionicon {
+    font-size: large;
+}
+
+.larger-ionicon {
+    font-size: xx-large;
+}
+/*Ionicon related CSS ends*/
+
+/*Spinner related CSS */
+div.spinner {
+  text-align: center;
+  padding-top:1.5em;
+}
+
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #444;
+  fill: #444;
+}
+
+/*Spinner related CSS ends*/
+
+/*Colour*/
+.dark{
+  color:444;
+}
+
+.message{
+  text-align: center;
+  font-weight: bolder;
+}
