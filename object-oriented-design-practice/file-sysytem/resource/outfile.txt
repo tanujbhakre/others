@@ -1,0 +1,21 @@
+Command: up	
+Can not move up from root directory
+Command: dir	
+No subdirectories
+Command: mkdir	sub1	
+Command: mkdir	sub1	
+Subdirectory already exist
+Command: mkdir	sub2	
+Command: cd	sub1	
+Command: cd	sub11	
+Subdirectory does not exist
+Command: mkdir	sub11	
+Command: mkdir	sub12	
+Command: dir	
+sub11	sub12	
+Command: up	
+Command: cd	sub2	
+Command: mkdir	sub21	
+Command: mkdir	sub22	
+Command: dir	
+sub21	sub22	

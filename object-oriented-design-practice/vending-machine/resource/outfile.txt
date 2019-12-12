@@ -1,0 +1,12 @@
+Command:[INSERT, 1]
+Inserted money:1.0. Total money so far:1.0
+Command:[PRODUCT, 1]
+Product selected. 
+Command:[DISPENSE]
+Dispensing: CANDY. Returning 0.9. Please collect it. 
+Command:[INSERT, 1]
+Inserted money:1.0. Total money so far:1.0
+Command:[PRODUCT, 1]
+Product out of stock please select another product. 
+Command:[DISPENSE]
+Product not selected please select the product

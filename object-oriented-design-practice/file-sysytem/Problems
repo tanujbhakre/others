@@ -1,0 +1,11 @@
+1. Design and build tic tac toe game. 
+	The code should be up and running. 
+	It should be scalable to multi-users and nXn grid. 
+	
+	Follow up questions on various modifications like introduction of not-allowed block in the tic tac toe grid, 
+	different winning criteria for different users and so on.
+	
+2. Design and code snake and ladder game. 
+	Then questions where asked on how it can be extended.
+
+	
